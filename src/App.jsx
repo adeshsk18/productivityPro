@@ -12,6 +12,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { Snackbar, Alert } from '@mui/material';
 import './App.css';
+import Footer from './components/Footer';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -207,6 +208,7 @@ function App() {
           {snackbar.message}
         </Alert>
       </Snackbar>
+      <Footer />
     </Router>
   );
 }
