@@ -10,6 +10,7 @@ import { Delete, Edit } from '@mui/icons-material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { Snackbar, Alert } from '@mui/material';
 import './App.css';
 
 function App() {
@@ -23,14 +24,21 @@ function App() {
   });
 
   const [editTask, setEditTask] = useState(null);
-
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    severity: 'success'
+  });
   const addTask = () => {
     if (newTask.title.trim()) {
-      setTasks([...tasks, { 
-        ...newTask, 
-        id: Date.now(),
-        createdAt: new Date().toISOString()
-      }]);
+      setTasks([
+        { 
+          ...newTask, 
+          id: Date.now(),
+          createdAt: new Date().toISOString()
+        },
+        ...tasks
+      ]);
       setNewTask({
         title: '',
         description: '',
@@ -46,6 +54,11 @@ function App() {
       task.id === editTask.id ? editTask : task
     ));
     setEditTask(null);
+    setSnackbar({
+      open: true,
+      message: 'Task updated successfully!',
+      severity: 'success'
+    });
   };
 
   const deleteTask = (id) => {
@@ -180,6 +193,20 @@ function App() {
           </Box>
         </Modal>
       </div>
+      <Snackbar 
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}  // Add this line
+      >
+        <Alert 
+          onClose={() => setSnackbar({ ...snackbar, open: false })} 
+          severity={snackbar.severity}
+          sx={{ width: '100%' }}  // Add this for better styling
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Router>
   );
 }
