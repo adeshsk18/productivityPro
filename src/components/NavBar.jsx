@@ -25,6 +25,8 @@ const NavBar = () => {
         <Link to="/tasks" onClick={toggleMenu}>Task Manager</Link>
         <Link to="/projects" onClick={toggleMenu}>Project Manager</Link>
         <Link to="/notes" onClick={toggleMenu}>Note Taker</Link>
+        <Link to="/login" onClick={toggleMenu}>Login</Link>
+        <Link to="/register" onClick={toggleMenu}>Register</Link>
       </div>
     </nav>
   );

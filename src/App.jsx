@@ -13,6 +13,10 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { Snackbar, Alert } from '@mui/material';
 import './App.css';
 import Footer from './components/Footer';
+import Login from './components/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthProvider } from './contexts/AuthContext';
+import Register from './components/Register';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -194,6 +198,28 @@ function App() {
           </Box>
         </Modal>
       </div>
+      <AuthProvider>
+        
+          <NavBar />
+          <Container>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/projects" element={
+                <ProtectedRoute>
+                  <ProjectManager tasks={tasks} setTasks={setTasks} />
+                </ProtectedRoute>
+              } />
+              <Route path="/notes" element={
+                <ProtectedRoute>
+                  <NoteTaker />
+                </ProtectedRoute>
+              } />
+              <Route path="/" element={<Navigate to="/login" />} />
+            </Routes>
+          </Container>
+        
+      </AuthProvider>
       <Snackbar 
         open={snackbar.open}
         autoHideDuration={3000}
@@ -210,6 +236,7 @@ function App() {
       </Snackbar>
       <Footer />
     </Router>
+    
   );
 }
 
