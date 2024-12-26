@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useAuth } from '../contexts/AuthContext';
 import './Register.css';
+import GoogleButton from './GoogleButton';
 
 export default function Register() {
   const { register } = useAuth();
@@ -67,6 +69,9 @@ export default function Register() {
             {loading ? 'Creating Account...' : 'Register'}
           </motion.button>
         </form>
+        <div className="divider">OR</div>
+        
+        <GoogleButton />
       </motion.div>
     </div>
   );
