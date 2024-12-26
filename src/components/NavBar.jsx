@@ -33,7 +33,7 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="nav-brand">
-        <Link to="/">ProductivityPro</Link>
+        <Link to="/">Productivity Pro</Link>
       </div>
       
       <button className={`hamburger ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>

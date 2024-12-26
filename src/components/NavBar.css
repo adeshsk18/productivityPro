@@ -15,7 +15,7 @@
 .nav-brand a {
   color: white;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
 }
 
@@ -25,6 +25,7 @@
 }
 
 .nav-links a {
+  font-size: 1.2rem;
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -32,6 +33,8 @@
 
 .nav-links a:hover {
   color: #3498db;
+  font-size: larger;
+  transform: translateY(-2px);
 }
 
 /* General Styles for Logout Button */
