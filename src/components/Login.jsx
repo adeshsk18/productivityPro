@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase/config';
-import { signInWithEmailAndPassword ,signOut} from 'firebase/auth';
+import { signInWithEmailAndPassword ,GoogleAuthProvider ,signOut} from 'firebase/auth';
 import { 
   Container, 
   Box, 
@@ -10,6 +10,7 @@ import {
   CssBaseline 
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import GoogleButton from './GoogleButton';
 
 
 const Login = () => {
@@ -84,6 +85,7 @@ const Login = () => {
           >
             Sign In
           </Button>
+          <GoogleButton />
         </Box>
       </Box>
     </Container>
