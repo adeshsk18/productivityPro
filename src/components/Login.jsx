@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase/config';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword ,signOut} from 'firebase/auth';
 import { 
   Container, 
   Box, 
@@ -9,17 +9,20 @@ import {
   TextField, 
   CssBaseline 
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      navigate('/tasks'); // Redirect to TaskManager after successful login
     } catch (error) {
       setError(error.message);
     }

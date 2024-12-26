@@ -34,6 +34,55 @@
   color: #3498db;
 }
 
+/* General Styles for Logout Button */
+.logout-button {
+  color: white;
+  background-color: #e74c3c;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertical alignment */
+  justify-content: center; /* Horizontal alignment */
+   /* Ensure it matches other nav links */
+}
+
+/* Hover Effects */
+.logout-button:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+.logout-button:active {
+  transform: scale(0.95);
+}
+
+/* Ensure alignment with nav links in fullscreen */
+.nav-links {
+  display: flex;
+  gap: 2rem; /* Maintain spacing */
+  align-items: center; /* Align all links, including button */
+}
+
+/* Mobile View Adjustment */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center; /* Center-align all links */
+  }
+
+  .logout-button {
+    width: 100%; /* Match width for consistency */
+    text-align: center;
+    margin: 1rem 0;
+  }
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
