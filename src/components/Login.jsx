@@ -18,13 +18,26 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/tasks'); // Redirect to TaskManager after successful login
+      navigate('/tasks');
     } catch (error) {
-      setError(error.message);
+      switch (error.code) {
+        case 'auth/invalid-email':
+          setError('Invalid email address format');
+          break;
+        case 'auth/user-not-found':
+          setError('Email not found. Please check your email or register');
+          break;
+        case 'auth/wrong-password':
+          setError('Incorrect password');
+          break;
+        default:
+          setError('Login failed. Please try again');
+      }
+      alert("Incorrect Email / Password"); // Show error in alert
     }
   };
 
