@@ -37,7 +37,6 @@ ProductivityPro is a powerful task management application built with React, desi
 
 - Persistent storage (localStorage/database)
 - Task filtering and sorting
-- User authentication
 - Deadline notifications
 
 ## Contributing
